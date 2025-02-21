@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Girlfriend?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-top: 50px;
+            color: #ff4081;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .no {
+            background-color: #ccc;
+        }
+        #message {
+            display: none;
+            font-size: 2em;
+            margin-top: 20px;
+            color: #ff4081;
+        }
+        @keyframes floatHearts {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2em;
+            animation: floatHearts 4s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Girlfriend? 💖</h1>
+    <div class="buttons">
+        <button class="yes" onclick="showLove()">Yes</button>
+        <button class="no" onclick="moveNoButton(this)">No</button>
+    </div>
+    <p id="message">Okay ma, I love you! 💕</p>
+    
+    <script>
+        function showLove() {
+            document.getElementById('message').style.display = 'block';
+            for (let i = 0; i < 20; i++) {
+                createHeart();
+            }
+        }
+
+        function moveNoButton(button) {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.position = 'absolute';
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+    </script>
+</body>
+</html>
